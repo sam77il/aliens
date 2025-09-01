@@ -13,6 +13,7 @@ public class PlayerDetectionState : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log("detected time: " +  detectionTime);
         // change color of detectionHeartPulse based on detectionTime, between white, orange and red
         if (detectionHeartPulse != null)
         {
@@ -34,6 +35,7 @@ public class PlayerDetectionState : MonoBehaviour
                 // Trigger alert state
                 Debug.Log("Player detected! Triggering alert state.");
                 detectionTime = requiredDetectionTime; // Cap the detection time
+                SetPlayerInSight(false);
             }
         }
         else
