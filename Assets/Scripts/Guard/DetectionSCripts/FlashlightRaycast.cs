@@ -9,22 +9,39 @@ public class FlashlightRaycast : MonoBehaviour
     //    DoRaycast(10f, LayerMask.GetMask("Player", "Obstacle")); //example usage
     //}
 
+
+    private RaycastHit hitInfo;
+    private bool hitSomething;
+    private float radius;
+
     // do raycast as spherecast to see if we hit something in front of us
-    public RaycastHit DoSpherecast(float distance, LayerMask layerMask)
+    public RaycastHit DoSpherecast(float distance, float radius, LayerMask layerMask)
     {
-        RaycastHit hitInfo;
-        if (Physics.SphereCast(transform.position, 0.5f, transform.forward, out hitInfo, distance, layerMask))
-        {
-            Debug.DrawRay(transform.position, transform.forward * hitInfo.distance, Color.red);
+        if (Physics.SphereCast(transform.position, radius, transform.forward, out hitInfo, distance, layerMask) && hitInfo.collider.CompareTag("Player"))
+        { 
+            this.radius = radius;
+            hitSomething = true;
+            Debug.DrawLine(transform.position, hitInfo.point, Color.red);
             // we hit something
-            Debug.Log("Flashlight hit: " + hitInfo.collider.name);
+            //Debug.Log("Flashlight hit: " + hitInfo.collider.name);
             return hitInfo;
         }
         else
         {
-            Debug.DrawRay(transform.position, transform.forward * distance, Color.green);
+            hitSomething = false;
+            Debug.DrawRay(transform.position, hitInfo.point, Color.green);
             // we didn't hit anything
             return new RaycastHit();
+        }
+    }
+
+
+    private void OnDrawGizmos()
+    {
+        if (hitSomething)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(hitInfo.point, radius);
         }
     }
 
