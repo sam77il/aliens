@@ -34,17 +34,22 @@ public class PlayerDetectionState : MonoBehaviour
             {
                 // Trigger alert state
                 Debug.Log("Player detected! Triggering alert state.");
-                detectionTime = requiredDetectionTime; // Cap the detection time
-                SetPlayerInSight(false);
+                detectionTime = requiredDetectionTime; // Clamp to max
             }
         }
         else
         {
-            detectionTime -= Time.deltaTime;
-            if (detectionTime < 0)
-                detectionTime = 0; // Prevent negative detection time
+            detectionTime -= Time.deltaTime*3;
+            if (detectionTime < 0f)
+                detectionTime = 0f;
         }
 
+    }
+
+    private void FixedUpdate()
+    {
+        if (playerInSight)
+            SetPlayerInSight(false); // reset for next detection cycle
     }
 
     public void SetPlayerInSight(bool inSight)
