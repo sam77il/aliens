@@ -13,7 +13,7 @@ public class PlayerDetectionState : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("detected time: " +  detectionTime);
+        //Debug.Log("detected time: " +  detectionTime);
         // change color of detectionHeartPulse based on detectionTime, between white, orange and red
         if (detectionHeartPulse != null)
         {
@@ -28,7 +28,7 @@ public class PlayerDetectionState : MonoBehaviour
         }
 
         if (playerInSight)
-        {
+        { // player is in sight, increase detection time
             detectionTime += Time.deltaTime;
             if (detectionTime >= requiredDetectionTime)
             {
@@ -38,18 +38,12 @@ public class PlayerDetectionState : MonoBehaviour
             }
         }
         else
-        {
+        { // player is not in sight, decrease detection time
             detectionTime -= Time.deltaTime*3;
             if (detectionTime < 0f)
                 detectionTime = 0f;
         }
 
-    }
-
-    private void FixedUpdate()
-    {
-        if (playerInSight)
-            SetPlayerInSight(false); // reset for next detection cycle
     }
 
     public void SetPlayerInSight(bool inSight)

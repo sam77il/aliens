@@ -2,44 +2,38 @@ using UnityEngine;
 
 public class FlashlightRaycast : MonoBehaviour
 {
-
-    //private void FixedUpdate()
-    //{
-    //    // do a raycast every fixed update to see if we hit something in front of us
-    //    DoRaycast(10f, LayerMask.GetMask("Player", "Obstacle")); //example usage
-    //}
-
-
     private RaycastHit hitInfo;
     private bool hitSomething;
     private float radius;
 
-    // do raycast as spherecast to see if we hit something in front of us
-    public RaycastHit DoSpherecast(float distance, float radius, LayerMask layerMask)
+    // do spherecast to see if we hit something in front of the flashlight
+    public RaycastHit DoSpherecast(float distance, float radius)
     {
-        if (Physics.SphereCast(transform.position, radius, transform.forward, out hitInfo, distance, layerMask) && hitInfo.collider.CompareTag("Player"))
-        { 
-            this.radius = radius;
-            hitSomething = true;
-            Debug.DrawLine(transform.position, hitInfo.point, Color.red);
-            // we hit something
-            //Debug.Log("Flashlight hit: " + hitInfo.collider.name);
+        Physics.SphereCast(transform.position, radius, transform.forward, out hitInfo, distance, LayerMask.GetMask("Player", "Obstacle"));
+        Collider col = hitInfo.collider;
+        if (col != null && col.CompareTag("Player")) // we hit the Player
+        {  
+            this.radius = radius; // set radius for drawWireSphere
+            hitSomething = true; // set bool to draw wireSphere
+            Debug.DrawRay(transform.position, transform.forward*distance, Color.red); // draw red ray when hitting player
             return hitInfo;
         }
-        else
+        else // we did not hit the player
         {
             hitSomething = false;
-            Debug.DrawRay(transform.position, hitInfo.point, Color.green);
-            // we didn't hit anything
+            Debug.DrawRay(transform.position, transform.forward*distance, Color.green); // draw green ray when not hitting player
+
             return new RaycastHit();
         }
-    }
 
+        
+
+    }
 
     private void OnDrawGizmos()
     {
         if (hitSomething)
-        {
+        { // draw a sphere when hitting player
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(hitInfo.point, radius);
         }
