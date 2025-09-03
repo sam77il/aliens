@@ -479,7 +479,7 @@ GameObject:
   - component: {fileID: 466023342}
   - component: {fileID: 466023341}
   - component: {fileID: 466023340}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -569,7 +569,7 @@ Transform:
   m_GameObject: {fileID: 466023339}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.12, y: 1, z: -4.66}
+  m_LocalPosition: {x: -14.52, y: 2.56, z: -3.83}
   m_LocalScale: {x: 2.69, y: 2.69, z: 2.69}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -731,7 +731,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3222457085509891490, guid: ad55ff4b2c14e974badaa0cbc6a7dc98, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.27
+      value: -10.46
       objectReference: {fileID: 0}
     - target: {fileID: 3222457085509891490, guid: ad55ff4b2c14e974badaa0cbc6a7dc98, type: 3}
       propertyPath: m_LocalPosition.y
@@ -739,7 +739,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3222457085509891490, guid: ad55ff4b2c14e974badaa0cbc6a7dc98, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.79
+      value: 10.56
       objectReference: {fileID: 0}
     - target: {fileID: 3222457085509891490, guid: ad55ff4b2c14e974badaa0cbc6a7dc98, type: 3}
       propertyPath: m_LocalRotation.w
@@ -996,9 +996,9 @@ Light:
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 250
-  m_Range: 10.4416895
+  m_Range: 11.403363
   m_SpotAngle: 55.185932
-  m_InnerSpotAngle: 13.706603
+  m_InnerSpotAngle: 33.62452
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -1407,7 +1407,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4229ebb8cd9cb04ba416e2464bc55f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EyesPosition: {fileID: 781938008}
+  EyesPosition: {fileID: 781938009}
+  FOV: 75
 --- !u!1 &1534357267
 GameObject:
   m_ObjectHideFlags: 0

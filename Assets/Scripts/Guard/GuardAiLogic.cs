@@ -10,47 +10,68 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class GuardAiLogic : MonoBehaviour
 {
+    // Variables
     NavMeshAgent m_Agent;
-    //RaycastHit m_HitInfo = new RaycastHit();
     private Animator m_Animator;
 
+    [Header("Patrolling Settings")]
     [SerializeField] private float delayBetweenPatrolPoints;
     [SerializeField] private GameObject patrolPointsParent;
     private Transform[] patrolPoints;
     private int currentPatrolIndex = 0;
+    private bool patrollingIsEnabled;
 
     void Start()
     {
+        // set the variables
+        patrollingIsEnabled = true;
+        // get NavMeshAgent
         m_Agent = GetComponent<NavMeshAgent>();
-        // get animator from child component
+        // get animator from child component (the 3d model)
         m_Animator = GetComponentInChildren<Animator>();
 
         // get all patrol points from parent object
         patrolPoints = patrolPointsParent.GetComponentsInChildren<Transform>();
         patrolPoints = patrolPoints[1..]; // remove first element which is the parent itself
 
+        // start patrolling
         StartCoroutine(GoToPatrollingPoint());
-        StartCoroutine(PrintAgentData());
+        //StartCoroutine(PrintAgentData());
     }
 
     void Update()
     {
-        //if (Input.GetMouseButtonDown(0) && !Input.GetKey(KeyCode.LeftShift))
-        //{
-        //    var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //    if (Physics.Raycast(ray.origin, ray.direction, out m_HitInfo))
-        //        m_Agent.destination = m_HitInfo.point;
-        //}
-        //Debug.Log("Agent velocity: " + m_Agent.velocity.magnitude);
         if (m_Animator.GetBool("isWalking") && m_Agent.velocity.magnitude > 1.5f)
             m_Animator.speed = m_Agent.velocity.magnitude / m_Agent.speed; // adjust animation speed based on agent speed
         else
             m_Animator.speed = 1f; // reset animation speed when not walking
     }
 
+    public void PausePatrollingForSeconds(float duration)
+    {
+        if (patrollingIsEnabled)
+            StartCoroutine(PausePatrollingForSecondsHelper(duration));
+    }
+
+    private IEnumerator PausePatrollingForSecondsHelper(float duration)
+    {
+        // pause patrolling for duration seconds
+        patrollingIsEnabled = false;
+        m_Agent.isStopped = true;
+        m_Animator.SetBool("isWalking", false); // set animation
+
+        yield return new WaitForSeconds(duration); // wait for duration seconds
+
+        // resume patrolling
+        patrollingIsEnabled = true;
+        m_Animator.SetBool("isWalking", true); // set animation
+        m_Agent.isStopped = false;
+    }
+
+    // helper function
     private IEnumerator PrintAgentData()
     {
-        while (false)
+        while (true)
         {
             yield return new WaitForSeconds(1f);
             Debug.Log("Agent velocity: " + m_Agent.velocity.magnitude);
@@ -68,7 +89,6 @@ public class GuardAiLogic : MonoBehaviour
         m_Agent.destination = patrolPoints[currentPatrolIndex++ % patrolPoints.Length].position;
 
         StartCoroutine(WaitUntilAgentReachDestination());
-
     }
 
     private IEnumerator WaitUntilAgentReachDestination()
@@ -78,22 +98,17 @@ public class GuardAiLogic : MonoBehaviour
         {
             yield return null;
         }
-        m_Animator.SetBool("isWalking", false);
+
+        m_Animator.SetBool("isWalking", false); // set animation
+        
         // wait until agent stop moving
         while (m_Agent.velocity.magnitude > 0.1f)
         {
             yield return null;
         }
+
+        // go to next patrolling point
         StartCoroutine(GoToPatrollingPoint());
     }
-
-    //private void OnAnimatorMove()
-    //{
-    //    if (m_Animator.GetBool("isWalking"))
-    //    {
-    //        m_Agent.speed = (m_Animator.deltaPosition / Time.deltaTime).magnitude;
-    //        Debug.Log("Agent speed: " + m_Agent.speed);
-    //    }
-    //}
 
 }

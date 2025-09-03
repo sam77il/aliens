@@ -2,64 +2,83 @@ using UnityEngine;
 
 public class SearchPlayer : MonoBehaviour
 {
+    // reference to the flashlight raycast script and guard ai logic script and player detection state script
     private FlashlightRaycast flashlightRaycast;
-    [SerializeField] private GameObject EyesPosition;
+    private GuardAiLogic guardAiLogic;
+    private PlayerDetectionState playerDetectionState;
+
+    // Empty at eye level of the guard.
+    [SerializeField] private Transform EyesPosition;
+    [SerializeField] private float FOV;
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // get flashlightRaycast component from a child object
+        // get flashlightRaycast component from a child object (the Guard's hand)
         flashlightRaycast = GetComponentInChildren<FlashlightRaycast>();
-        //debug check if we found it
+
+        // get GuardAiLogic component from this object
+        guardAiLogic = GetComponent<GuardAiLogic>();
+
+        playerDetectionState = null; // we will get this component later from the player when we see him
+
+        // debug check if we found it
         if (flashlightRaycast == null)
             Debug.LogError("FlashlightRaycast component not found in children of " + gameObject.name);
     }
 
     void FixedUpdate()
     {
-        // if player with tag "Player" is in the trigger collider of this object, calculate if player is in view of 75° cone in front of this object
+        // get player with tag "Player" if it is in the trigger collider of this object
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 10f, LayerMask.GetMask("Player"));
 
-        foreach (var hitCollider in hitColliders)
+        // check if hitColliders array is empty. if yes: return;
+        if (hitColliders.Length == 0)
+            return;
+
+        Collider hitCollider = hitColliders[0]; // save collided player in a variable for easier acces
+
+        Vector3 directionToPlayer = (hitCollider.transform.position - transform.position).normalized; // get direction vector to player
+        float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer); // get angle of player relative to the guard
+        if (angleToPlayer < (FOV/2)) // calculate if player is in view of *FOV* cone in front of guard
         {
-            if (!hitCollider.CompareTag("Player"))
-                break;
+            // do a sphereCast to see if player is in the light area of the flashlight
+            RaycastHit hitInfo;
+            hitInfo = flashlightRaycast.DoSpherecast(10f, 2f);
 
-            Vector3 directionToPlayer = (hitCollider.transform.position - transform.position).normalized;
-            float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
-            if (angleToPlayer < 37.5f) // half of 75°
+            if (hitInfo.collider != null) // if whe hit something ( the player or an obstacle )
             {
-                //Debug.Log("Player in view: " + hitCollider.name);
-                // do a raycast to see if there is a direct line of sight to the player
-                RaycastHit hitInfo;
-                hitInfo = flashlightRaycast.DoSpherecast(10f, 2f, LayerMask.GetMask("Player", "Obstacle"));
-
-                if (hitInfo.collider != null)
+                // Raycast from the eyes of the guard, to check if there is direct line of sight
+                RaycastHit hit;
+                Vector3 positionOfEyes = EyesPosition.position;
+                directionToPlayer = (hitCollider.transform.position - positionOfEyes).normalized;
+                Physics.Raycast(positionOfEyes, directionToPlayer, out hit, 11f); // raycast from the eyes of the guard
+                if (hit.collider != null && hit.collider.CompareTag("Player")) // when player in direct sight
                 {
-                    RaycastHit hit;
-                    directionToPlayer = (hitCollider.transform.position - EyesPosition.transform.position).normalized;
-                    Physics.Raycast(EyesPosition.transform.position, directionToPlayer, out hit, 10f);
-                    if (hit.collider != null && hit.collider.CompareTag("Player"))
-                    {
-                        hit.transform.GetComponentInParent<PlayerDetectionState>().SetPlayerInSight(true);
-                        Debug.DrawLine(EyesPosition.transform.position, hit.point, Color.magenta);
-                        //Debug.Log("Distance from the eyes: " + hit.distance );
-                    }
-                    else
-                    {
-                        Debug.DrawLine(EyesPosition.transform.position, hit.point, Color.cyan);
-                    }
-
+                    if (playerDetectionState == null) // get PlayerDetectionState component from the player if we don't have it yet
+                        playerDetectionState = hitCollider.GetComponentInParent<PlayerDetectionState>();
+                    playerDetectionState.SetPlayerInSight(true);
+                    Debug.DrawLine(positionOfEyes, hit.point, Color.magenta); // draw magenta line when player in sight
+                    guardAiLogic.PausePatrollingForSeconds(2.64f); // pause patrolling when player in sight
                 }
+                else
+                {
+                    if (playerDetectionState != null)
+                        playerDetectionState.SetPlayerInSight(false);
+                    Debug.DrawLine(positionOfEyes, hit.point, Color.cyan); // draw cyna line when player not in sight
+                }
+
+            } else
+            {
+                if (playerDetectionState != null)
+                    playerDetectionState.SetPlayerInSight(false);
             }
-        }
+        } 
     }
 
     private void OnDrawGizmos()
     {
-        // visualize the sphere in the editor
-        //Debug.DrawRay(transform.position, transform.forward * 10f, Color.blue);
+        // visualize the overlap sphere in the editor
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, 10f);
 
