@@ -37,6 +37,9 @@ public class GameDebug : MonoBehaviour
             case "grounded":
                 debugTexts[4].text = "IsGrounded?: " + value;
                 break;
+            case "crouching":
+                debugTexts[5].text = "IsCrouching?: " + value;
+                break;
         }
     }
 }

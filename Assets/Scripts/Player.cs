@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private InputSystem_Actions inputActions;
     [Header("Movement Speeds")]
     [SerializeField] private float walkSpeed = 3f;
     [SerializeField] private float sprintMultiplier = 2f;
@@ -16,39 +15,70 @@ public class Player : MonoBehaviour
     [SerializeField] private CharacterController characterController;
     [SerializeField] private Camera mainCamera;
 
+    private InputSystem_Actions inputActions;
     private Vector3 currentMovement;
     private float verticalRotation;
-    private float CurrentSpeed => walkSpeed * (SprintTriggered ? sprintMultiplier : 1.0f);
+    private float CurrentSpeed => walkSpeed * (IsSprinting ? sprintMultiplier : 1.0f);
 
     public Vector2 MovementInput { get; private set; }
     public Vector2 RotationInput { get; private set; }
-    public bool JumpTriggered { get; private set; }
-    public bool SprintTriggered { get; private set; }
+    public bool IsJumping { get; private set; }
+    public bool IsSprinting { get; private set; }
+    public bool IsCrouching { get; private set; }
 
 
     private void Awake()
     {
         inputActions = new InputSystem_Actions();
 
-        inputActions.Player.Move.performed += ctx => MovementInput = ctx.ReadValue<Vector2>();
-        inputActions.Player.Move.canceled += ctx => MovementInput = Vector2.zero;
+        inputActions.Player.Move.performed += ctx =>
+        {
+            MovementInput = ctx.ReadValue<Vector2>();
+            GameDebug.Instance.UpdateDebugText("walking", true);
+        };
+        inputActions.Player.Move.canceled += ctx =>
+        {
+            MovementInput = Vector2.zero;
+            GameDebug.Instance.UpdateDebugText("walking", false);
+        };
+
+        inputActions.Player.Crouch.performed += ctx =>
+        {
+            characterController.height = 0.5f;
+            IsCrouching = true;
+            GameDebug.Instance.UpdateDebugText("crouching", IsCrouching);
+        };
+        inputActions.Player.Crouch.canceled += ctx =>
+        {
+            characterController.height = 1f;
+            IsCrouching = false;
+            GameDebug.Instance.UpdateDebugText("crouching", IsCrouching);
+        };
 
         inputActions.Player.Look.performed += ctx => RotationInput = ctx.ReadValue<Vector2>();
         inputActions.Player.Look.canceled += ctx => RotationInput = Vector2.zero;
 
         inputActions.Player.Jump.performed += ctx =>
         {
-            JumpTriggered = true;
-            GameDebug.Instance.UpdateDebugText("jumping", JumpTriggered);
+            IsJumping = true;
+            GameDebug.Instance.UpdateDebugText("jumping", IsJumping);
         };
         inputActions.Player.Jump.canceled += ctx =>
         {
-            JumpTriggered = false;
-            GameDebug.Instance.UpdateDebugText("jumping", JumpTriggered);
+            IsJumping = false;
+            GameDebug.Instance.UpdateDebugText("jumping", IsJumping);
         };
 
-        inputActions.Player.Sprint.performed += ctx => SprintTriggered = true;
-        inputActions.Player.Sprint.canceled += ctx => SprintTriggered = false;
+        inputActions.Player.Sprint.performed += ctx =>
+        {
+            IsSprinting = true;
+            GameDebug.Instance.UpdateDebugText("sprinting", IsSprinting);
+        };
+        inputActions.Player.Sprint.canceled += ctx =>
+        {
+            IsSprinting = false;
+            GameDebug.Instance.UpdateDebugText("sprinting", IsSprinting);
+        };
     }
 
     private void Start()
@@ -88,7 +118,7 @@ public class Player : MonoBehaviour
         {
             currentMovement.y = -0.5f;
 
-            if (JumpTriggered)
+            if (IsJumping)
             {
                 currentMovement.y = jumpForce;
             }
@@ -109,15 +139,9 @@ public class Player : MonoBehaviour
         characterController.Move(currentMovement * Time.deltaTime);
     }
 
-    private void ApplyHorizontalRotation(float rotationAmount)
-    {
-        transform.Rotate(0, rotationAmount, 0);
-    }
-
     private void ApplyVerticalRotation(float rotationAmount)
     {
         verticalRotation = Mathf.Clamp(verticalRotation - rotationAmount, -upDownLookRange, upDownLookRange);
-
         mainCamera.transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
     }
 
@@ -126,7 +150,7 @@ public class Player : MonoBehaviour
         float mouseX = inputActions.Player.Look.ReadValue<Vector2>().x * mouseSensitivity;
         float mouseY = inputActions.Player.Look.ReadValue<Vector2>().y * mouseSensitivity;
 
-        ApplyHorizontalRotation(mouseX);
+        transform.Rotate(0, mouseX, 0);
         ApplyVerticalRotation(mouseY);
     }
 }
