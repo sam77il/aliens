@@ -31,14 +31,11 @@ public class GameDebug : MonoBehaviour
             case "sprinting":
                 debugTexts[2].text = "IsSprinting?: " + value;
                 break;
-            case "againstwall":
-                debugTexts[3].text = "IsAgainstWall?: " + value;
-                break;
             case "grounded":
-                debugTexts[4].text = "IsGrounded?: " + value;
+                debugTexts[3].text = "IsGrounded?: " + value;
                 break;
             case "crouching":
-                debugTexts[5].text = "IsCrouching?: " + value;
+                debugTexts[4].text = "IsCrouching?: " + value;
                 break;
         }
     }
