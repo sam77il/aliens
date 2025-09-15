@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 67928134163540651, guid: f6be05ad7a6442a4b87800134d545ba3, type: 3}
       propertyPath: m_TagString
-      value: DoorRight
+      value: Interactable
       objectReference: {fileID: 0}
     - target: {fileID: 3036780152522756928, guid: f6be05ad7a6442a4b87800134d545ba3, type: 3}
       propertyPath: m_TagString
-      value: DoorLeft
+      value: Interactable
       objectReference: {fileID: 0}
     - target: {fileID: 3340632375856361187, guid: f6be05ad7a6442a4b87800134d545ba3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -58,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3425044729371047284, guid: f6be05ad7a6442a4b87800134d545ba3, type: 3}
       propertyPath: m_Name
-      value: Door1 Variant
+      value: DoorOpenable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee8a9db54b7a9b24facb10bc1a868af2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftDoor: 1
 --- !u!1 &7922393525625223599 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 67928134163540651, guid: f6be05ad7a6442a4b87800134d545ba3, type: 3}
@@ -153,3 +154,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee8a9db54b7a9b24facb10bc1a868af2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftDoor: 0

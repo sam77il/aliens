@@ -4,6 +4,7 @@ using UnityEngine;
 public class InteractDoor : Interactables
 {
     private InteractDoor[] doors;
+    [SerializeField] private bool leftDoor = false;
 
     void Start()
     {
@@ -18,7 +19,6 @@ public class InteractDoor : Interactables
                 index++;
             }
         }
-
     }
 
     public override void Use()
@@ -32,11 +32,11 @@ public class InteractDoor : Interactables
         float sec = 0f;
         while (sec <= 0.75f)
         {
-            if (gameObject.CompareTag("DoorLeft"))
+            if (leftDoor)
             {
                 transform.Translate(Vector3.right * Time.deltaTime * 1f, Space.Self);
             }
-            else if (gameObject.CompareTag("DoorRight"))
+            else if (!leftDoor)
             {
                 transform.Translate(Vector3.left * Time.deltaTime * 1f, Space.Self);
             }
