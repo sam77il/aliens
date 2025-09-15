@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - heartRateVisual
+  - DoorLeft
+  - DoorRight
   layers:
   - Default
   - TransparentFX
