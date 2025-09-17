@@ -7,17 +7,17 @@ public class InteractScrews : Interactables
 
     public bool isScrewed = true;
 
-    //// Uncomment the following Start method to test the Use method automatically after a delay
-    //private void Start()
-    //{
-    //    StartCoroutine(DelayUse());
-    //}
+    // Uncomment the following Start method to test the Use method automatically after a delay
+    private void Start()
+    {
+        StartCoroutine(DelayUse());
+    }
 
-    //private IEnumerator DelayUse()
-    //{
-    //    yield return new WaitForSeconds(1.5f);
-    //    Use();
-    //}
+    private IEnumerator DelayUse()
+    {
+        yield return new WaitForSeconds(1.5f);
+        Use();
+    }
 
     public override void Use()
     {

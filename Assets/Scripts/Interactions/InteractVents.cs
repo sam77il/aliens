@@ -6,31 +6,31 @@ public class InteractVents : Interactables
     [SerializeField] private float force = 10f;
     private GameObject[] screws;
 
-    //private void Start()
-    //{
-    //    StartCoroutine(UseDelay());
+    private void Start()
+    {
+        StartCoroutine(UseDelay());
 
 
-    //    // get the parallel gameobjects that have the Script InteractScrews, fill them in the screws variable and print their names to the console
-    //    screws = new GameObject[transform.parent.childCount - 1];
-    //    int index = 0;
-    //    foreach (Transform sibling in transform.parent)
-    //    {
-    //        if (sibling.gameObject != this.gameObject && sibling.GetComponent<InteractScrews>() != null)
-    //        {
-    //            screws[index] = sibling.gameObject;
-    //            //Debug.Log("Found screw: " + sibling.gameObject.name);
-    //            index++;
-    //        }
-    //    }
+        // get the parallel gameobjects that have the Script InteractScrews, fill them in the screws variable and print their names to the console
+        screws = new GameObject[transform.parent.childCount - 1];
+        int index = 0;
+        foreach (Transform sibling in transform.parent)
+        {
+            if (sibling.gameObject != this.gameObject && sibling.GetComponent<InteractScrews>() != null)
+            {
+                screws[index] = sibling.gameObject;
+                //Debug.Log("Found screw: " + sibling.gameObject.name);
+                index++;
+            }
+        }
 
-    //}
+    }
 
-    //private IEnumerator UseDelay()
-    //{
-    //    yield return new WaitForSeconds(3.5f);
-    //    Use();
-    //}
+    private IEnumerator UseDelay()
+    {
+        yield return new WaitForSeconds(3.5f);
+        Use();
+    }
 
     public override void Use()
     {

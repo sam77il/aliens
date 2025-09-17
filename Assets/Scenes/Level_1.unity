@@ -4109,11 +4109,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5126334277440438340, guid: 20785a023e47b614aa4d850e0cfdd4c6, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7922393525625223599, guid: 20785a023e47b614aa4d850e0cfdd4c6, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7966317867695904581, guid: 20785a023e47b614aa4d850e0cfdd4c6, type: 3}
       propertyPath: m_StaticEditorFlags
