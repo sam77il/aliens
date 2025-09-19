@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f9dbf1e0692f1914e8d30b6ca32d1896
+guid: cf48655b32bed0e4ea644d38867c4eb8
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,58 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Cell
-    second: {fileID: 2100000, guid: 5aa04eb3998a4544d8f975c6d6f1b802, type: 2}
+      name: Orange
+    second: {fileID: 2100000, guid: 6be742050986bc7498fdad2fa789d9b7, type: 2}
   - first:
-      type: UnityEngine:Material
+      type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: Cell_dummy
-    second: {fileID: 2100000, guid: c0eb109ea9a01c14aa5fcdda5d2fb814, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Fence_Stairs
-    second: {fileID: 2100000, guid: 9255f36631df7944da5e68da66925bb5, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Fence_long
-    second: {fileID: 2100000, guid: 496d1dd84be0f7440a5875d412f5dc38, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Fence_short
-    second: {fileID: 2100000, guid: c976f0373f7ac804ca57176becf2651c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Floor_tileable
-    second: {fileID: 2100000, guid: 8f4598c47963a0a4189deb350e9b5251, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Gangway
-    second: {fileID: 2100000, guid: a997eb02c36b07248a804836fbf20abe, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.004
-    second: {fileID: 2100000, guid: 929335e2bdcf00c46ad7d6234a05f124, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Stairs
-    second: {fileID: 2100000, guid: 6ff62aa7849bfe346b2ef9bd775e7863, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Wall door
-    second: {fileID: 2100000, guid: ab179e3d1431aef4899c05fa56868d75, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Wall lr
-    second: {fileID: 2100000, guid: b0c41bab57408a943ab757f207585db4, type: 2}
+      name: pip2_orange_wa_DefaultMaterial_DirectXNormal
+    second: {fileID: 2800000, guid: 862157a120fe8c841a17c6fd884e0752, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

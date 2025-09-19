@@ -8,7 +8,7 @@ public class InteractVents : Interactables
 
     private void Start()
     {
-        StartCoroutine(UseDelay());
+        //StartCoroutine(UseDelay());
 
 
         // get the parallel gameobjects that have the Script InteractScrews, fill them in the screws variable and print their names to the console
