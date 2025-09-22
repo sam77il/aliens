@@ -3,7 +3,17 @@ guid: 01f526572b8847a4aa1684c70ec37092
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Kantinentablett
+    second: {fileID: 2100000, guid: f6e7f4eb7fc3d454c925e81971f0f5d5, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: pip2_kantinentablett_wa_DefaultMaterial_DirectXNormal
+    second: {fileID: 2800000, guid: 62ec834a52a952441a7e70ca5ecc11c5, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

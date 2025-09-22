@@ -3,7 +3,17 @@ guid: 51514dab63629e444b5e5356db292c25
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 75c4e2cc54a5e9d488a75b1f32da03f7, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: pip2_MRE_wa_DefaultMaterial_DirectXNormal
+    second: {fileID: 2800000, guid: 170eeb194121d2e43b523b215f21e53d, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

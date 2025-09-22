@@ -3,7 +3,22 @@ guid: 4c2de5ca1af3fb24497c45d77af59f33
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lampe
+    second: {fileID: 2100000, guid: f333893ff45c8874095f180a72b5c3ff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "R\xF6hre"
+    second: {fileID: 2100000, guid: 48a099398b4d7ac4dad6c8ef9dd9e688, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: pip2_neonlampe_wa_Material_DirectXNormal
+    second: {fileID: 2800000, guid: e66cd05998be7b14fb4b4fcf533e4af2, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
