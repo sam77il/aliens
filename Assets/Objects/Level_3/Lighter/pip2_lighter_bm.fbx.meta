@@ -3,7 +3,77 @@ guid: 12340950cf421104f8f81f52b5fe5b7a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: body
+    second: {fileID: 2100000, guid: 77dd4d29a4893874ab6ff9a94aec7a86, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: igniter
+    second: {fileID: 2100000, guid: a1c7f7fc0405ed8498bcbe2c9bdeaea9, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: lighter_body_Alpha
+    second: {fileID: 2800000, guid: 77a87d908977fc644b0c95e49249fb62, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: lighter_body_BaseColor
+    second: {fileID: 2800000, guid: 15b53c97d68954848872a828d1b57bb2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: lighter_body_Emission
+    second: {fileID: 2800000, guid: 23e4f7e8476899249b0fb5feaea85347, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: lighter_body_Metallic
+    second: {fileID: 2800000, guid: 19225ebab1f9755468276341643e7039, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: lighter_body_Normal
+    second: {fileID: 2800000, guid: 2ca84c166dcce3c46b65aa0e65584342, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: lighter_body_Roughness
+    second: {fileID: 2800000, guid: 3efb3ccb706f3a644a7c97d1ab05cae9, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: lighter_igniter_Alpha
+    second: {fileID: 2800000, guid: a4c273780714897419060d4b5e1ed69b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: lighter_igniter_BaseColor
+    second: {fileID: 2800000, guid: 7631a023d8db71e459226a65235da57b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: lighter_igniter_Emission
+    second: {fileID: 2800000, guid: 9d5b43e7c86d1864f89df5fa0d481382, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: lighter_igniter_Metallic
+    second: {fileID: 2800000, guid: 0c104fe9d34b60140a36a27978307d0d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: lighter_igniter_Normal
+    second: {fileID: 2800000, guid: dbdeaba092794334c81506efcae12937, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: lighter_igniter_Roughness
+    second: {fileID: 2800000, guid: 9a21f691f6866fa40a2760a05fb1f30f, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
