@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     public bool IsSprinting { get; private set; }
     public bool IsCrouching { get; private set; }
 
+    private Item isInteractable;
 
     private void Awake()
     {
@@ -102,6 +103,23 @@ public class Player : MonoBehaviour
     {
         HandleMovement();
         HandleRotation();
+    }
+
+    private void FixedUpdate()
+    {
+        RaycastHit hit;
+        Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, 2f);
+        Debug.DrawRay(mainCamera.transform.position, mainCamera.transform.forward * 2f, Color.red);
+
+        if (hit.collider != null)
+        {
+            Debug.Log("Hit: " + hit.collider.name);
+            isInteractable = hit.collider.CompareTag("Interactable") ? hit.collider.GetComponent<Item>() : null;
+        }
+        else
+        {
+            isInteractable = null;
+        }
     }
 
     private Vector3 CalculateWorldDirection()

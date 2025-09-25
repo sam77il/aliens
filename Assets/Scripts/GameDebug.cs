@@ -6,20 +6,28 @@ public class GameDebug : MonoBehaviour
 {
     public static GameDebug Instance { get; private set; }
     private List<TMP_Text> debugTexts;
+    private bool isDebugging = true;
 
     private void Awake()
     {
         Instance = this;
     }
 
-  private void Start()
+    private void Start()
     {
+        if (!isDebugging)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
         TMP_Text[] allText = gameObject.GetComponentsInChildren<TMP_Text>();
         debugTexts = new List<TMP_Text>(allText);
     }
 
     public void UpdateDebugText(string debugType, object value)
     {
+        if (!isDebugging) return;
+
         switch (debugType)
         {
             case "jumping":
