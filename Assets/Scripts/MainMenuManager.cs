@@ -14,7 +14,7 @@ public class MainMenuManager : MonoBehaviour
     {
         if (scene.buildIndex == 1)
         {
-            GameManager.Instance.SpawnPlayer(new Vector3(0, 1, 0));
+            GameManager.Instance.SpawnPlayer(new Vector3(-1.802f, 0.376f, -0.705f));
             // Unsubscribe from the event to avoid multiple calls
         }
         SceneManager.sceneLoaded -= OnSceneLoaded;
