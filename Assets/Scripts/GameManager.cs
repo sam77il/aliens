@@ -18,13 +18,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void OnEnable()
+    public void SpawnPlayer(Vector3 position)
     {
-        SpawnPlayer();
-    }
-
-    private void SpawnPlayer()
-    {
-        Instantiate(playerPrefab);
+        Instantiate(playerPrefab, position, Quaternion.identity);
     }
 }
