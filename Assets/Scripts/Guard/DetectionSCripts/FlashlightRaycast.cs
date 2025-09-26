@@ -26,8 +26,6 @@ public class FlashlightRaycast : MonoBehaviour
             return new RaycastHit();
         }
 
-        
-
     }
 
     private void OnDrawGizmos()

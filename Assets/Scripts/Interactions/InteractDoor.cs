@@ -19,7 +19,7 @@ public class InteractDoor : Interactables
                 index++;
             }
         }
-        Use();
+        //Use();
     }
 
     public override void Use()

@@ -30,7 +30,7 @@ public class SearchPlayer : MonoBehaviour
     void FixedUpdate()
     {
         // get player with tag "Player" if it is in the trigger collider of this object
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 10f, LayerMask.GetMask("Player"));
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 5f, LayerMask.GetMask("Player"));
 
         // check if hitColliders array is empty. if yes: return;
         if (hitColliders.Length == 0)
@@ -44,14 +44,15 @@ public class SearchPlayer : MonoBehaviour
         {
             // do a sphereCast to see if player is in the light area of the flashlight
             RaycastHit hitInfo;
-            hitInfo = flashlightRaycast.DoSpherecast(10f, 2f);
+            hitInfo = flashlightRaycast.DoSpherecast(5f, 0.5f);
 
             if (hitInfo.collider != null) // if whe hit something ( the player or an obstacle )
             {
                 // Raycast from the eyes of the guard, to check if there is direct line of sight
                 RaycastHit hit;
                 Vector3 positionOfEyes = EyesPosition.position;
-                directionToPlayer = (hitCollider.transform.position - positionOfEyes).normalized;
+                directionToPlayer = (hitCollider.transform.position - positionOfEyes) + new Vector3(0f, 0.5f, 0f);
+                directionToPlayer = directionToPlayer.normalized;
                 Physics.Raycast(positionOfEyes, directionToPlayer, out hit, 11f); // raycast from the eyes of the guard
                 if (hit.collider != null && hit.collider.CompareTag("Player")) // when player in direct sight
                 {
@@ -59,7 +60,8 @@ public class SearchPlayer : MonoBehaviour
                         playerDetectionState = hitCollider.GetComponentInParent<PlayerDetectionState>();
                     playerDetectionState.SetPlayerInSight(true);
                     Debug.DrawLine(positionOfEyes, hit.point, Color.magenta); // draw magenta line when player in sight
-                    guardAiLogic.PausePatrollingForSeconds(2.64f); // pause patrolling when player in sight
+                    //guardAiLogic.PausePatrollingForSeconds(2.64f); // pause patrolling when player in sight
+                    guardAiLogic.PausePatrollingForSeconds(); // pause patrolling when player in sight
                 }
                 else
                 {
@@ -80,7 +82,7 @@ public class SearchPlayer : MonoBehaviour
     {
         // visualize the overlap sphere in the editor
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, 10f);
+        Gizmos.DrawWireSphere(transform.position, 5f);
 
     }
 }

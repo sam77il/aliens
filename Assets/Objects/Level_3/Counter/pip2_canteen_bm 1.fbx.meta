@@ -1,0 +1,247 @@
+fileFormatVersion: 2
+guid: ab5e593da7b04d7429132de1a0c95053
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: canteen
+    second: {fileID: 2100000, guid: f56743752e29d204aa7d5b54f0d6f840, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: register
+    second: {fileID: 2100000, guid: f10c1cbaaca18c043a72f65983a61034, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: register_display
+    second: {fileID: 2100000, guid: 82e04fbe7bb240044bf612373854848b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tablet_area
+    second: {fileID: 2100000, guid: 18529074630852441b9bd0b87dc1e90c, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: canteen_Alpha
+    second: {fileID: 2800000, guid: 4af0d9e3fdd54834f82e3d9558a3ad65, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: canteen_BaseColor
+    second: {fileID: 2800000, guid: 595eedc4472d58b449cba9ce66f3ad72, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: canteen_Emission
+    second: {fileID: 2800000, guid: a86f466cc56bca54eafc6d678f5e49e5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: canteen_Metallic
+    second: {fileID: 2800000, guid: 0e22d0df0261a7b4a817d3a83355ebbb, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: canteen_Normal
+    second: {fileID: 2800000, guid: 2968d94cc339de9438a177c701829601, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: canteen_Roughness
+    second: {fileID: 2800000, guid: b0f8a32f2884dda40b7e63f0d0fcbe02, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: register_Alpha
+    second: {fileID: 2800000, guid: 02912d1c197564b40bff5236ab390cbb, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: register_BaseColor
+    second: {fileID: 2800000, guid: b21f0ca01b444be4594a9cebc00bafb0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: register_Emission
+    second: {fileID: 2800000, guid: a23aa554cb835394b9749a1e9e9d5736, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: register_Metallic
+    second: {fileID: 2800000, guid: ddf831b93afa93f4293025c1ca68ee11, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: register_Normal
+    second: {fileID: 2800000, guid: f640b5302360ea14a882d9adccfc7da0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: register_Roughness
+    second: {fileID: 2800000, guid: 22d7cb5050a417d4ea4024a49c1e0123, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: register_display_Alpha
+    second: {fileID: 2800000, guid: c49946e23d4979c44b0a7163b4831fbb, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: register_display_BaseColor
+    second: {fileID: 2800000, guid: e438de5f855f71e418ecf2d6dc6784b6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: register_display_Emission
+    second: {fileID: 2800000, guid: efcfb4cac14a9324dbde305baabe7ecd, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: register_display_Metallic
+    second: {fileID: 2800000, guid: 687e63463bd5e504f97f8d769798a06e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: register_display_Normal
+    second: {fileID: 2800000, guid: 034543b010f5a314b884b6897a7c815b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: register_display_Roughness
+    second: {fileID: 2800000, guid: 911f21cfee168c44ea8c666f58f7a008, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: tablet_area_Alpha
+    second: {fileID: 2800000, guid: 8cd96f81bc1669943b00157f78ac30a9, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: tablet_area_BaseColor
+    second: {fileID: 2800000, guid: 8d346434c72096d49a8b096d66c94f14, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: tablet_area_Emission
+    second: {fileID: 2800000, guid: d85130f61332b9a42a102e916d4cd3b2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: tablet_area_Metallic
+    second: {fileID: 2800000, guid: 39f2b95680d7680488517421648b2a49, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: tablet_area_Normal
+    second: {fileID: 2800000, guid: db3ccde82a90efa42af032b620ca0ff2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: tablet_area_Roughness
+    second: {fileID: 2800000, guid: 75816c3bd2478594191464e6bee52e7e, type: 3}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
